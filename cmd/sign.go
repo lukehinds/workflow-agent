@@ -28,16 +28,21 @@ This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 
-		if os.Getenv(RequestTokenEnvKey) != "" {
-			fmt.Println("Request is : " + os.Getenv(RequestTokenEnvKey))
-		}
-
-		if os.Getenv(RequestURLEnvKey) != "" {
-			fmt.Println("Request URL is : " + os.Getenv(RequestURLEnvKey))
+		if os.Getenv(RequestTokenEnvKey) == "" {
+			fmt.Println("Error: Request token environment variable is not set")
 			os.Exit(1)
 		}
 
-		url := os.Getenv(RequestURLEnvKey) + "&audience=sigstore"
+		requestURL := os.Getenv(RequestURLEnvKey)
+
+		if requestURL == "" {
+			fmt.Println("Error: Request URL environment variable is not set")
+			os.Exit(1)
+		}
+
+		fmt.Println("Request URL is : " + requestURL)
+
+		url := requestURL + "&audience=sigstore"
 
 		req, err := http.NewRequest("GET", url, nil)
 		if err != nil {
