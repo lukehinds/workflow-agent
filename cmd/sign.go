@@ -37,7 +37,7 @@ to quickly create a Cobra application.`,
 			os.Exit(1)
 		}
 
-		url := os.Getenv(RequestURLEnvKey) + "&audience=sigstore"
+		url := os.Getenv(RequestURLEnvKey) + "&audience=aud"
 
 		req, err := http.NewRequest("GET", url, nil)
 		if err != nil {
