@@ -28,12 +28,12 @@ This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 
-		if os.Getenv(RequestTokenEnvKey) == "" {
-			fmt.Println("Request token not found in environment variable")
-			os.Exit(1)
+		if os.Getenv(RequestTokenEnvKey) != "" {
+			fmt.Println("Request is : " + os.Getenv(RequestTokenEnvKey))
 		}
-		if os.Getenv(RequestURLEnvKey) == "" {
-			fmt.Println("Request URL not found in environment variable")
+
+		if os.Getenv(RequestURLEnvKey) != "" {
+			fmt.Println("Request URL is : " + os.Getenv(RequestURLEnvKey))
 			os.Exit(1)
 		}
 
