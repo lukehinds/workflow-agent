@@ -1,0 +1,13 @@
+name: "Go Container Action Test Out"
+description: "Go Container action"
+author: "Luke Hinds"
+inputs:
+  myInput:
+    description: "Input to use"
+    default: "world"
+outputs:
+  myOutput:
+    description: "Output from the action"
+runs:
+  using: "docker"
+  image: "Dockerfile"
