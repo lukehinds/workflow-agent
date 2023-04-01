@@ -51,27 +51,28 @@ to quickly create a Cobra application.`,
 			os.Exit(1)
 		}
 
-		// Extract the desired claims
 		claims, ok := token.Claims.(jwt.MapClaims)
 		if !ok {
 			fmt.Println("Error: Unable to extract claims from access token")
 			os.Exit(1)
 		}
 
-		repository, ok := claims["repository"].(string)
-		if !ok {
-			fmt.Println("Error: Unable to extract repository claim")
-			os.Exit(1)
-		}
+		fmt.Printf("Token Claims: %+v\n", claims)
 
-		jobWorkflowRef, ok := claims["job_workflow_ref"].(string)
-		if !ok {
-			fmt.Println("Error: Unable to extract job_workflow_ref claim")
-			os.Exit(1)
-		}
+		// repository, ok := claims["repository"].(string)
+		// if !ok {
+		// 	fmt.Println("Error: Unable to extract repository claim")
+		// 	os.Exit(1)
+		// }
 
-		fmt.Println("Repository: " + repository)
-		fmt.Println("Job Workflow Ref: " + jobWorkflowRef)
+		// jobWorkflowRef, ok := claims["job_workflow_ref"].(string)
+		// if !ok {
+		// 	fmt.Println("Error: Unable to extract job_workflow_ref claim")
+		// 	os.Exit(1)
+		// }
+
+		// fmt.Println("Repository: " + repository)
+		// fmt.Println("Job Workflow Ref: " + jobWorkflowRef)
 
 		// Append audience to the URL
 		url := requestURL + "&audience=sigstore"
