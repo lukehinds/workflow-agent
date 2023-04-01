@@ -14,4 +14,4 @@ FROM gcr.io/distroless/static
 
 COPY --from=builder /app/app /app
 
-ENTRYPOINT ["/app sign"]
+ENTRYPOINT ["/app", "sign"]
